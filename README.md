@@ -79,7 +79,6 @@ Then, go to [http://localhost:3000/](http://localhost:3000/)
 
 Voila!
 
-
 # License
 
 All the source code in the [The Odin Project](https://www.theodinproject.com/courses/ruby-on-rails/lessons/forms) is available jointly under the MIT License and the Beerware License.
