@@ -1,9 +1,8 @@
 # frozen_string_literal: true
 
 class UsersController < ApplicationController
-  def index
-    @users=User.all
-  end
+  before_action :not_logged_in, only: %i[new create]
+  before_action :logged_in, only: %i[show]
 
   def show
     @user = User.find(params[:id])
@@ -28,4 +27,6 @@ class UsersController < ApplicationController
   def user_params
   params.require(:user).permit(:name, :email, :password, :password_confirmation)
   end
+
+  
 end

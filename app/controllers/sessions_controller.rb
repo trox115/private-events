@@ -1,6 +1,6 @@
 class SessionsController < ApplicationController
+  before_action :not_logged_in, only: %i[new create]
   protect_from_forgery with: :exception
-  include SessionsHelper
 
   def new
   end
@@ -20,4 +20,5 @@ class SessionsController < ApplicationController
     log_out
     redirect_to root_url
   end
+
 end
