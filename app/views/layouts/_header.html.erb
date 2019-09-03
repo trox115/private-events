@@ -6,7 +6,8 @@
             <li><%= link_to "Home",   '#' %></li>
             <li><%# <%= link_to "Help",   '#' %></li>
                     <% if logged_in? %>
-          <li><%= "Hello #{@user.name}!" %></li>
+          <li><%= "Hello put name here!" %></li>
+          <li><%= link_to "Logout", logout_path %></li>
            <% else %>
             <li><%= link_to "Log in", login_path %></li>
              <% end %>
