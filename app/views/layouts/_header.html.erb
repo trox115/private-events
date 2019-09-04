@@ -6,6 +6,7 @@
         <li><%= link_to "Home",   root_path %></li>
         <% if logged_in? %>
           <li><%= link_to "Hello, #{current_user.name}",  current_user %></li>
+          <li><%= link_to 'See all Events',  events_path %></li>
           <li><%= link_to 'Create an Event',  new_event_path %></li>
           <li>
             <%= link_to "Logout", logout_path, method: :delete %>
