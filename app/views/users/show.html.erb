@@ -4,8 +4,8 @@
       </h1>
 
  <% if @user.events.any? %>
-      <h3>Events (<%= @user.events.count %>)</h3>
-      <ol class="events">
-        <%= render @events %>
-      </ol>
-      <% end %>
+  <h3>Events (<%= @user.events.count %>)</h3>
+  <ol class="events">
+    <%= render @events %>
+  </ol>
+<% end %>
