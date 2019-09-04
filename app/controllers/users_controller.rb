@@ -7,6 +7,7 @@ class UsersController < ApplicationController
   def show
     @user = User.find(params[:id])
     @events = @user.events
+    @user_attendance = @user.attendances
   end
 
   def new
@@ -29,5 +30,6 @@ class UsersController < ApplicationController
   params.require(:user).permit(:name, :email, :password, :password_confirmation)
   end
 
-  
+
+
 end
