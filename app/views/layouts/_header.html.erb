@@ -3,10 +3,10 @@
     <%= link_to "EvEnT APP", '#', id: "logo" %>
     <nav>
       <ul class="nav navbar-nav navbar-right">
-        <li><%= link_to "Home",   '#' %></li>
-        <li><%# <%= link_to "Help",   '#' %></li>
+        <li><%= link_to "Home",   root_path %></li>
         <% if logged_in? %>
-          <li><%= "Hello, #{current_user.name}" %></li>
+          <li><%= link_to "Hello, #{current_user.name}",  current_user %></li>
+          <li><%= link_to 'Create an Event',  new_event_path %></li>
           <li>
             <%= link_to "Logout", logout_path, method: :delete %>
           </li>
