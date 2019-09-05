@@ -7,7 +7,7 @@ class UsersController < ApplicationController
   def show
     @user = User.find(params[:id])
     @events = @user.events
-    @user_attendance = @user.attendances
+    @user_attendance = @user.events_as_attendee
     @events_created_future = @user.events.future.order(date: :desc)
     @events_created_past = @user.events.past.order(date: :desc)
   end

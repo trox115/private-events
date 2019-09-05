@@ -1,4 +1,4 @@
 <% provide(:title, attendance.id) %>
 <h1>
-  <%= link_to "#{retrieve_name_event(attendance.id)}",   event_path(retrieve_id_event(attendance.id)) %>
+  <%= link_to "#{retrieve_name_event(attendance.attended_event_id)}",   event_path(retrieve_id_event(attendance.attended_event_id)) %>
 </h1>
