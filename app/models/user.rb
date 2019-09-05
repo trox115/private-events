@@ -1,5 +1,4 @@
 class User < ApplicationRecord
-  has_secure_password
   before_save { email.downcase! }
   validates :name, presence: true
   validates :email, presence:true
@@ -10,4 +9,6 @@ class User < ApplicationRecord
   validates :password, presence: true, length: { minimum: 6 }
   has_secure_password
   has_many :events
+  has_many :attendances, foreign_key: 'attendee_id'
+  has_many :events_as_attendee, through: :attendances, source: "attended_event"
 end
