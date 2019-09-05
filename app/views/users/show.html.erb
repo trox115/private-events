@@ -15,7 +15,12 @@
     <%= render  @user_attendance %>
   </ol>
 <% end %>
-<h3>upcoming Events(<%= @events_created_future.count %>)</h3>
+<h3>All upcoming Events(<%= @future_events.count %>)</h3>
   <ol class="attendances">
-    <%= render  @user_attendance %>
+    <%= render @future_events %>
+  </ol>
+
+  <h3>All Past Events(<%= @past_events.count %>)</h3>
+  <ol class="attendances">
+    <%= render @past_events %>
   </ol>
