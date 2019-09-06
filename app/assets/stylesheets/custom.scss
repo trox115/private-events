@@ -187,3 +187,22 @@ input {
     color: $state-danger-text;
   }
 }
+
+/* Events */
+ul { 
+  list-style: none
+}
+
+
+.event{
+  background-color: rgba($color: #777, $alpha: 0.7);
+  margin: 15px, 0px;
+  border-radius: 10px;
+  h3{
+    font-size: 2.5em;
+    text-align: center;
+  }
+  p{
+    margin-left: 20px;
+  }
+}

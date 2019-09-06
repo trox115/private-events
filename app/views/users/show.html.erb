@@ -5,22 +5,22 @@
 
  <% if @user.events.any? %>
   <h3>Events created(<%= @user.events.count %>)</h3>
-  <ol class="events">
+  <ul class="events">
     <%= render @events %>
-  </ol>
+  </ul>
 <% end %>
  <% if @user.attendances.any? %>
   <h3>I am going to(<%= @user.attendances.count %>)</h3>
-  <ol class="attendances">
+  <ul class="attendances">
     <%= render  @user_attendance %>
-  </ol>
+  </ul>
 <% end %>
 <h3>All upcoming Events(<%= @events_created_future.count %>) created by <%=@user.name%></h3>
-  <ol class="attendances">
+  <ul class="attendances">
     <%= render @events_created_future %>
-  </ol>
+  </ul>
 
   <h3>All Past Events(<%= @events_created_past.count %>) created by <%=@user.name%></h3>
-  <ol class="attendances">
+  <ul class="attendances">
     <%= render@events_created_past %>
-  </ol>
+  </ul>
