@@ -3,24 +3,19 @@
         <%= @user.name %>
       </h1>
 
- <% if @user.events.any? %>
-  <h3>Events created(<%= @user.events.count %>)</h3>
-  <ul class="events">
-    <%= render @events %>
-  </ul>
-<% end %>
- <% if @user.attendances.any? %>
+<% if @user.attendances.any? %>
   <h3>I am going to(<%= @user.attendances.count %>)</h3>
   <ul class="attendances">
     <%= render  @user_attendance %>
   </ul>
 <% end %>
-<h3>All upcoming Events(<%= @events_created_future.count %>) created by <%=@user.name%></h3>
-  <ul class="attendances">
-    <%= render @events_created_future %>
-  </ul>
 
-  <h3>All Past Events(<%= @events_created_past.count %>) created by <%=@user.name%></h3>
-  <ul class="attendances">
-    <%= render@events_created_past %>
-  </ul>
+<h3>All upcoming Events(<%= @events_created_future.count %>) created by <%=@user.name%></h3>
+<ul class="attendances">
+  <%= render @events_created_future %>
+</ul>
+
+<h3>All Past Events(<%= @events_created_past.count %>) created by <%=@user.name%></h3>
+<ul class="attendances">
+  <%= render@events_created_past %>
+</ul>

@@ -5,6 +5,6 @@
       <%= link_to "#{event.title}",  event_path(event) %>
     </h3>
     <p><%= event.description %></p>
-    <p><%= event.date %>
+    <p>Date: <%= event.date %> Invites: <%= eventcreator(event) %></p>
   </div>
 </li>
