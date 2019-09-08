@@ -58,3 +58,13 @@ event = user.events.build(title: "Parranda", description: "This is the parranda 
 event.save()
 event = user.events.build(title: "Parranda", description: "This is the parranda #{Time.now + 1.month}", date: Time.now + 1.month)
 event.save()
+
+# Attend to one event
+carlos = User.find_by(name: "carlos")
+angie = User.find_by(name: "angie")
+antonio = User.find_by(name: "antonio")
+
+event = carlos.events.first
+carlos.events_as_attendee << event
+angie.events_as_attendee << event
+antonio.events_as_attendee << event
