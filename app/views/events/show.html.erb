@@ -1,11 +1,16 @@
 <h1>
   <%= "#{@event.title}" %>
 </h1>
+<% if attending(@event) %>
+  You will attend to this Event
+<% elsif %>
+  <%= link_to "Register to this event" %> 
+<% end %>
 <p><%= @event.description %></p>
 <p>Creator: <%= eventcreator(@event) %> <p>
-<h2>Who is going?</h2>
-    <% if @event.attendees.any? %>
-      <h3>(<%= @event.attendees.count %>) persons</h3>
-      <%= render @attendees%>
 
-    <% end %>
+<h2>Who is going?</h2>
+<% if @event.attendees.any? %>
+  <h3>(<%= @event.attendees.count %>) persons</h3>
+  <%= render @attendees%>
+<% end %>

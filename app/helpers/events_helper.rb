@@ -5,4 +5,7 @@ module EventsHelper
   def retrieve_name(attendees)
    User.find_by(id: attendees.ids).name
   end
+  def attending(event)
+    event.attendees.include? current_user
+  end
 end
