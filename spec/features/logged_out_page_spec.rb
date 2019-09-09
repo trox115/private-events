@@ -26,4 +26,8 @@ RSpec.describe 'Home', type: :feature do
     has_field? "Create My Account"
     respond_to be_success
   end
+  scenario 'Unauthenticated user try to access user profile goes redirected to login page' do
+  visit '/users/1'
+  expect(page).to have_current_path "/login"
+  end
 end

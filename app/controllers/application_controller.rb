@@ -12,7 +12,7 @@ class ApplicationController < ActionController::Base
 
   def logged_in
     return if current_user
-    redirect_to root_url
+    redirect_to login_path
   end
 
   def not_logged_in

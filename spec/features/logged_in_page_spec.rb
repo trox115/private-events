@@ -12,6 +12,13 @@ RSpec.describe 'Log In', type: :feature do
     end
     click_button 'Create My Account'
     expect(page).to have_content 'Welcome to the Events App, user!'
-    
+    visit events_path
+    expect(page).to have_current_path '/login'
+    within("form") do
+      fill_in 'Name', with: 'user'
+    end
+    click_button 'Log in'
+    expect(page).to have_content 'Log in successful'
   end
+  
 end
