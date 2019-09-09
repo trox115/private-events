@@ -3,11 +3,7 @@ require 'rails_helper'
 RSpec.describe User, type: :model do
   context 'Create a user with valid information' do
     it 'Creates the user' do
-      user = User.new(
-        name: "carlos",
-        email: "carlos@gmail.com",
-        password: "12345678"
-      )
+      user = FactoryBot.build(:user)
       expect(user.valid?).to eq true
       expect(user).to be_valid
     end

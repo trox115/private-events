@@ -2,7 +2,7 @@
 require 'rails_helper'
  
 RSpec.describe 'Home', type: :feature do
-  scenario 'Home page' do
+  scenario 'Go to Home page' do
     visit root_path
     expect(page).to have_content('Welcome to the Events APP')
     respond_to be_success
@@ -21,6 +21,9 @@ RSpec.describe 'Home', type: :feature do
     expect(page).to have_content("Log in")
     #expect(page).to have_content("Create My Account")
     expect(page).to have_content("Sign up")
+    has_field? "user_password"
+    has_field? "user_password_confirmation"
+    has_field? "Create My Account"
     respond_to be_success
   end
 end

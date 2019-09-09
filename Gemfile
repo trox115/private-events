@@ -45,6 +45,8 @@ group :development, :test do
   gem 'selenium-webdriver'
   gem 'chromedriver-helper'
 
+  gem "factory_bot_rails", "~> 4.10.0"
+
 end
 
 group :development do
