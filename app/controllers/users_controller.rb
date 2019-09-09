@@ -6,13 +6,12 @@ class UsersController < ApplicationController
 
   def show
     @user = User.find(params[:id])
-    @ev = Event.all
-    @events = @user.events
+    #@events = @user.events
     @user_attendance = @user.events_as_attendee
     @events_created_future = @user.events.future.order(date: :desc)
     @events_created_past = @user.events.past.order(date: :desc)
-    @future_events = @ev.future.order(date: :asc)
-    @past_events = @ev.past.order(date: :desc)
+    #@future_events = @ev.future.order(date: :asc)
+    #@past_events = @ev.past.order(date: :desc)
   end
 
   def new
@@ -34,7 +33,4 @@ class UsersController < ApplicationController
   def user_params
   params.require(:user).permit(:name, :email, :password, :password_confirmation)
   end
-
-
-
 end
