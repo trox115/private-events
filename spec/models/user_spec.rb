@@ -42,5 +42,26 @@ RSpec.describe User, type: :model do
       user.valid?
       expect(user.errors[:email]).to include("has already been taken")
     end
+    it 'User password too short' do
+    user = User.new(
+        name: "carlos thiago",
+        email: "carlos@gmail.com",
+        password: "123"
+      )
+      user.valid?
+      expect(user).not_to be_valid
+     
+    end
+    it 'Invalid email address' do
+      user = User.new(
+          name: "carlos thiago",
+          email: "carlos.com",
+          password: "12345678"
+        )
+        user.valid?
+        expect(user).not_to be_valid
+        expect(user.errors[:email]).to include("is invalid")
+       
+      end
   end
 end
