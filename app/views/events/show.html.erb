@@ -10,7 +10,7 @@
 <p>Creator: <%= eventcreator(@event) %> <p>
 
 <h2>Who is going?</h2>
-<% if @event.attendees.any? %>
-  <h3>(<%= @event.attendees.count %>) persons</h3>
+<% if @event.guests.any? %>
+  <h3>(<%= @event.guests.count %>) persons</h3>
   <%= render @attendees%>
 <% end %>

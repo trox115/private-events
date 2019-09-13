@@ -19,6 +19,27 @@ RSpec.describe 'Log In', type: :feature do
     end
     click_button 'Log in'
     expect(page).to have_content 'Log in successful'
+    respond_to be_success
+    
+    visit root_url
+    expect(page).to have_content("Logout")
+    expect(page).to have_content("See all Events")
+    expect(page).to have_content("Create an Event")
+    respond_to be_success
+
+    visit events_path
+    expect(page).to have_content("Logout")
+    expect(page).to have_content("See all Events")
+    expect(page).to have_content("Create an Event")
+    respond_to be_success
+
+    user = User.find_by(email: "user@example.com")
+    e = user.events.first()
+    visit events_path(e)
+    respond_to be_success
+    expect(page).to have_content("Logout")
+    expect(page).to have_content("See all Events")
+    expect(page).to have_content("Create an Event")
   end
   
 end

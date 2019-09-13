@@ -6,6 +6,6 @@ module EventsHelper
    User.find_by(id: attendees.ids).name
   end
   def attending(event)
-    event.attendees.include? current_user
+    event.guests.include? current_user
   end
 end
