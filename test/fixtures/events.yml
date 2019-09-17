@@ -1,0 +1,9 @@
+event1:
+  creator: carlos
+  title: "The Weekend Party"
+  description: "the coolest party ever!"
+
+event2:
+  creator: antonio
+  title: "Christmas party"
+  description: "Happy new Year"
