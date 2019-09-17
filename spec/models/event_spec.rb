@@ -48,8 +48,4 @@ RSpec.describe Event, type: :model do
 
   end
 
-  context 'Create events and add guests' do
-
-  end
-
 end
