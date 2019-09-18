@@ -40,9 +40,9 @@ class EventsControllerTest < ActionDispatch::IntegrationTest
   test "should create event" do
     post login_url, params: { session: { name: @carlos.name }}
     assert_difference('Event.count') do
-      post events_url, params: { event: { title: @event.title, description: @event.description} }
+      post events_url, params: { event: { title: @event.title, description: @event.description, guests: [] } }
     end
-    assert_redirected_to user_url(@carlos)
+    assert_response :redirect
   end
 
   test "should show event" do

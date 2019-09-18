@@ -44,6 +44,7 @@ group :development, :test do
   # of interacting with the browser.
   gem 'selenium-webdriver'
   gem 'chromedriver-helper'
+  gem 'rails-controller-testing'
 
   gem "factory_bot_rails", "~> 4.10.0"
 

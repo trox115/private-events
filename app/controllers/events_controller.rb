@@ -24,7 +24,7 @@ class EventsController < ApplicationController
         user ? @event.guests << user : next
       end
       flash[:success] = "New Event Created, #{@event.title}!"
-      redirect_to current_user
+      redirect_to event_path(@event)
     else
       render 'new'
     end
