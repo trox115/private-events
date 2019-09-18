@@ -17,7 +17,12 @@ class EventsController < ApplicationController
 
   def create
     @event = current_user.events.build(event_params)
+    guests = params["event"]["guests"]
     if @event.save
+      guests.each do |guest| 
+        user = User.find_by(id: guest)
+        user ? @event.guests << user : next
+      end
       flash[:success] = "New Event Created, #{@event.title}!"
       redirect_to current_user
     else
@@ -32,7 +37,6 @@ class EventsController < ApplicationController
   def update
     @event = Event.find(params[:id])
     guests = params["event"]["guests"]
-    puts "guests: #{guests}"
     if @event.update_attributes(event_params)
       # Handle a successful update.
       

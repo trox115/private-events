@@ -8,6 +8,9 @@
   <%=f.label :description, "Description"%>
   <%=f.text_area :description, class: 'form-control'  %>
 
+  <%=f.label :guests, "Guests"%>
+  <%= f.collection_select(:guests, User.all , :id, :name, {:selected => @event.guests.map(&:id), include_blank: false }, { multiple: true }) %> 
+
   <%= f.submit "Create new Event", class:"btn btn-primary"%>
   <%end%>
 </div>

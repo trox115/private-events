@@ -4,7 +4,7 @@
       </h1>
 
 <% if @user.attendances.any? %>
-  <h3>I am going to(<%= @user.attendances.count %>)</h3>
+  <h3>I am invited to(<%= @user.attendances.count %>)</h3>
   <ul class="attendances">
     <%= render  @user_attendance %>
   </ul>
