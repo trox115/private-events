@@ -1,5 +1,6 @@
 class EventsController < ApplicationController
   before_action :logged_in, only: %i[show index create new]
+  before_action :user_creator?, only: %i[edit update]
   def index
     @events = Event.all
     @past_events = @events.past
@@ -37,7 +38,7 @@ class EventsController < ApplicationController
   def update
     @event = Event.find(params[:id])
     guests = params["event"]["guests"]
-    if @event.update_attributes(event_params)
+    if @event.update(event_params)
       # Handle a successful update.
       
       guests.each do |guest| 

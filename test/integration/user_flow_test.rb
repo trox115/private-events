@@ -4,7 +4,7 @@ class UserFlowsTest < ActionDispatch::IntegrationTest
   
   def setup
     @user = users(:carlos)
-    @event = events(:event1)
+    @event = events(:event2)
   end
 
   test "User log in and create an event" do
@@ -45,7 +45,21 @@ class UserFlowsTest < ActionDispatch::IntegrationTest
     get event_path(@event)
     assert_template 'events/show'
     assert_response :success
+    #puts "creator: #{@event.creator.name}"
     assert_select 'a[href=?]', edit_event_path(@event), count: 0
+    get edit_event_path(@event)
+    assert_redirected_to events_path
+    follow_redirect!
+    assert_template 'events/index'
+
+    title = 'Not allowed to change'
+    description = "not allowed to change"
+    patch event_path(@event), params: { event:
+                                            { title: title,
+                                              description: description,
+                                              guests: [] } }
+    follow_redirect!
+    assert_template 'events/index'
 
   end
 end
