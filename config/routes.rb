@@ -7,10 +7,11 @@ Rails.application.routes.draw do
   get '/logout',  to: 'sessions#destroy'
 
   post '/events/new',  to: 'events#create'
+  patch '/events/:id/edit', to: 'events#update'
   #get '/events',    to: 'events#index'
   
   resources :users
-  resources :events
+  resources :events, only: %i[show index new create edit update]
   root 'static_pages#home'
 
 end

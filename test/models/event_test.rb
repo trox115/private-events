@@ -20,4 +20,8 @@ class EventTest < ActiveSupport::TestCase
     @event.description = '     '
     assert_not @event.valid?
   end
+  test 'creator should be present' do
+    @event.creator = nil
+    assert_not @event.valid?
+  end
 end
