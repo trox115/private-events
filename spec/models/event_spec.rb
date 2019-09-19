@@ -31,7 +31,7 @@ RSpec.describe Event, type: :model do
 
   context 'Using FactoryBot' do
     it 'generates associated data from a factory' do
-      event = FactoryBot.create(:event)
+      FactoryBot.create(:event)
     end
 
     it 'Creates an event for tomorrow' do

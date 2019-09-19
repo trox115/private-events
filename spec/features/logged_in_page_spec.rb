@@ -14,10 +14,23 @@ RSpec.describe 'Log In', type: :feature do
     end
     click_button 'Create My Account'
     expect(page).to have_content 'Welcome to the Events App, user!'
+
     visit events_path
     expect(page).to have_current_path '/login'
     within('form') do
       fill_in 'Email', with: 'user@example.com'
+    end
+    click_button 'Log in'
+    expect(page).to have_content 'Log in successful'
+    respond_to be_success
+  end
+
+  scenario 'signup and visit some pages' do
+    user = FactoryBot.create(:user)
+    visit events_path
+    expect(page).to have_current_path '/login'
+    within('form') do
+      fill_in 'Email', with: user.email
     end
     click_button 'Log in'
     expect(page).to have_content 'Log in successful'
@@ -31,11 +44,10 @@ RSpec.describe 'Log In', type: :feature do
 
     visit events_path
     expect(page).to have_content('Logout')
-    expect(page).to have_content('See all Events')
     expect(page).to have_content('Create an Event')
     respond_to be_success
 
-    user = User.find_by(email: 'user@example.com')
+    user = User.find_by(email: user.email)
     e = user.events.first
     visit events_path(e)
     respond_to be_success

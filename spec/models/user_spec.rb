@@ -8,6 +8,21 @@ RSpec.describe User, type: :model do
       expect(FactoryBot.build(:user)).to be_valid
     end
 
+    it 'User password too short' do
+      user = FactoryBot.build(:user, password: '123')
+      user.valid?
+      expect(user.errors[:password]).to include('is too short (minimum is 6 characters)')
+      # , "User Errors:#{user.errors[:password].inspect}"
+    end
+
+    it 'Invalid email address' do
+      user = FactoryBot.build(:user, email: 'example.com')
+      user.valid?
+      expect(user.errors[:email]).to include('is invalid')
+    end
+  end
+
+  context 'Check invalid conditions' do
     it 'Is invalid without a name' do
       user = FactoryBot.build(:user, name: nil)
       user.valid?
@@ -31,18 +46,6 @@ RSpec.describe User, type: :model do
       user = FactoryBot.build(:user, email: 'aaron@example.com')
       user.valid?
       expect(user.errors[:email]).to include('has already been taken')
-    end
-
-    it 'User password too short' do
-      user = FactoryBot.build(:user, password: '123')
-      user.valid?
-      expect(user.errors[:password]).to include('is too short (minimum is 6 characters)') # , "User Errors:#{user.errors[:password].inspect}"
-    end
-
-    it 'Invalid email address' do
-      user = FactoryBot.build(:user, email: 'example.com')
-      user.valid?
-      expect(user.errors[:email]).to include('is invalid')
     end
   end
 

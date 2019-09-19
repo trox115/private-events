@@ -2,9 +2,9 @@
 
 module SessionsHelper
   def current_user
-    if (name = session[:name])
-      @current_user ||= User.find_by(name: name)
-    end
+    return unless session[:name]
+
+    @current_user ||= User.find_by(name: session[:name])
   end
 
   def logged_in?
