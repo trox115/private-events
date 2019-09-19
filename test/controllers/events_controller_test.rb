@@ -31,19 +31,19 @@ class EventsControllerTest < ActionDispatch::IntegrationTest
   end
 
   test 'should get index' do
-    post login_url, params: { session: { name: @carlos.name } }
+    post login_url, params: { session: { email: @carlos.email } }
     get events_url
     assert_response :success
   end
 
   test 'should get new' do
-    post login_url, params: { session: { name: @carlos.name } }
+    post login_url, params: { session: { email: @carlos.email } }
     get new_event_url
     assert_response :success
   end
 
   test 'should create event' do
-    post login_url, params: { session: { name: @carlos.name } }
+    post login_url, params: { session: { email: @carlos.email } }
     assert_difference('Event.count') do
       post events_url, params: { event: { title: @event.title,
                                           description: @event.description,
@@ -54,7 +54,7 @@ class EventsControllerTest < ActionDispatch::IntegrationTest
   end
 
   test 'should show event' do
-    post login_url, params: { session: { name: @carlos.name } }
+    post login_url, params: { session: { email: @carlos.email } }
     get event_url(@event)
     assert_response :success
   end

@@ -10,7 +10,7 @@ class UserFlowsTest < ActionDispatch::IntegrationTest
 
   test 'User log in and create an event' do
     get login_path
-    post login_path, params: { session: { name: @user.name } }
+    post login_path, params: { session: { email: @user.email } }
     follow_redirect!
     get events_path
     assert_template 'events/index'
@@ -42,7 +42,7 @@ class UserFlowsTest < ActionDispatch::IntegrationTest
   end
   test 'Events should be editable by the creator only' do
     get login_path
-    post login_path, params: { session: { name: @user.name } }
+    post login_path, params: { session: { email: @user.email } }
     follow_redirect!
     get event_path(@event)
     assert_template 'events/show'
