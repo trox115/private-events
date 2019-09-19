@@ -9,3 +9,9 @@ event2:
   title: "Christmas party"
   description: "Happy new Year"
   date: <%= Time.now + 1.week %>
+
+past_event:
+  creator: antonio
+  title: "Christmas party"
+  description: "Happy new Year"
+  date: <%= Time.now - 5.week %>

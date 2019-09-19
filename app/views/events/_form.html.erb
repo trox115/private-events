@@ -1,4 +1,4 @@
-<%=form_for(@event, url: new_event_path) do |f|  %>
+<%=form_for(@event, url: local_assigns[:url]) do |f|  %>
     <%= render 'shared/error_messages_events' %>
   <%= f.label :title ,"Title"%>
   <%= f.text_field :title, class: 'form-control'%>
