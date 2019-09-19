@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'test_helper'
 
 class EventTest < ActiveSupport::TestCase
@@ -27,7 +29,7 @@ class EventTest < ActiveSupport::TestCase
   end
 
   test 'Events in the past should not be valid' do
-    e = @user.events.new(title:"Future", description: "event", date: Time.now - 1.week)
+    e = @user.events.new(title: 'Future', description: 'event', date: Time.now - 1.week)
     assert_not e.valid?
   end
 
@@ -45,5 +47,4 @@ class EventTest < ActiveSupport::TestCase
     @past_event.date = Time.now + 1.month
     assert_not @past_event.valid?
   end
-
 end

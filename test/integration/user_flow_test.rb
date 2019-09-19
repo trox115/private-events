@@ -1,13 +1,14 @@
+# frozen_string_literal: true
+
 require 'test_helper'
- 
+
 class UserFlowsTest < ActionDispatch::IntegrationTest
-  
   def setup
     @user = users(:carlos)
     @event = events(:event2)
   end
 
-  test "User log in and create an event" do
+  test 'User log in and create an event' do
     get login_path
     post login_path, params: { session: { name: @user.name } }
     follow_redirect!
@@ -26,7 +27,7 @@ class UserFlowsTest < ActionDispatch::IntegrationTest
     assert_template 'events/new'
 
     title = 'Parranda'
-    description = "A vallenato party"
+    description = 'A vallenato party'
     assert_difference 'Event.count', 1 do
       post events_path, params: { event:
                                       { title: title,
@@ -38,8 +39,7 @@ class UserFlowsTest < ActionDispatch::IntegrationTest
     follow_redirect!
     assert_match description, response.body
     assert_match title, response.body
-
-  end  
+  end
   test 'Events should be editable by the creator only' do
     get login_path
     post login_path, params: { session: { name: @user.name } }
@@ -47,7 +47,7 @@ class UserFlowsTest < ActionDispatch::IntegrationTest
     get event_path(@event)
     assert_template 'events/show'
     assert_response :success
-    #puts "creator: #{@event.creator.name}"
+    # puts "creator: #{@event.creator.name}"
     assert_select 'a[href=?]', edit_event_path(@event), count: 0
     get edit_event_path(@event)
     assert_redirected_to events_path
@@ -55,7 +55,7 @@ class UserFlowsTest < ActionDispatch::IntegrationTest
     assert_template 'events/index'
 
     title = 'Not allowed to change'
-    description = "not allowed to change"
+    description = 'not allowed to change'
     patch event_path(@event), params: { event:
                                             { title: title,
                                               description: description,
@@ -63,6 +63,5 @@ class UserFlowsTest < ActionDispatch::IntegrationTest
                                               guests: [] } }
     follow_redirect!
     assert_template 'events/index'
-
   end
 end

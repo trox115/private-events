@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 ENV['RAILS_ENV'] ||= 'test'
 require_relative '../config/environment'
 require 'rails/test_help'
@@ -17,7 +19,7 @@ class ActiveSupport::TestCase
 
   # Log in as a particular user.
   def log_in_as(user)
-    puts "logging in!!"
+    puts 'logging in!!'
     session[:name] = user.name
   end
   # Add more helper methods to be used by all tests here...

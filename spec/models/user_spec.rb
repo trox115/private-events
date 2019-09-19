@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'rails_helper'
 
 RSpec.describe User, type: :model do
@@ -25,22 +27,22 @@ RSpec.describe User, type: :model do
     end
 
     it 'Is invalid with a duplicate email address' do
-      FactoryBot.create(:user, email: "aaron@example.com")
-      user = FactoryBot.build(:user, email: "aaron@example.com")
+      FactoryBot.create(:user, email: 'aaron@example.com')
+      user = FactoryBot.build(:user, email: 'aaron@example.com')
       user.valid?
-      expect(user.errors[:email]).to include("has already been taken")
+      expect(user.errors[:email]).to include('has already been taken')
     end
 
     it 'User password too short' do
       user = FactoryBot.build(:user, password: '123')
       user.valid?
-      expect(user.errors[:password]).to include("is too short (minimum is 6 characters)")#, "User Errors:#{user.errors[:password].inspect}"
+      expect(user.errors[:password]).to include('is too short (minimum is 6 characters)') # , "User Errors:#{user.errors[:password].inspect}"
     end
 
     it 'Invalid email address' do
-      user = FactoryBot.build(:user, email: "example.com")
+      user = FactoryBot.build(:user, email: 'example.com')
       user.valid?
-      expect(user.errors[:email]).to include("is invalid")
+      expect(user.errors[:email]).to include('is invalid')
     end
   end
 

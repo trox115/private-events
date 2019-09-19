@@ -1,9 +1,11 @@
+# frozen_string_literal: true
+
 class SessionsController < ApplicationController
   before_action :not_logged_in, only: %i[new create]
   protect_from_forgery with: :exception
 
-  def new
-  end
+  def new; end
+
   def create
     @user = User.find_by(name: params[:session][:name])
     if @user
@@ -16,9 +18,9 @@ class SessionsController < ApplicationController
       render 'new'
     end
   end
+
   def destroy
     log_out
     redirect_to root_url
   end
-
 end

@@ -1,5 +1,6 @@
+# frozen_string_literal: true
+
 module SessionsHelper
-  
   def current_user
     if (name = session[:name])
       @current_user ||= User.find_by(name: name)
@@ -9,5 +10,4 @@ module SessionsHelper
   def logged_in?
     !current_user.nil?
   end
-
 end
