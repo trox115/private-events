@@ -16,7 +16,10 @@ class EventsControllerTest < ActionDispatch::IntegrationTest
   end
 
   test "should not be able to create an event without login" do
-    post events_url, params: { event: { title: @event.title, description: @event.description} }
+    post events_url, params: { event: { title: @event.title,
+                                        description: @event.description,
+                                        date: @event.date, 
+                                        guests: []} }
     assert_redirected_to login_url
   end
 
@@ -40,7 +43,10 @@ class EventsControllerTest < ActionDispatch::IntegrationTest
   test "should create event" do
     post login_url, params: { session: { name: @carlos.name }}
     assert_difference('Event.count') do
-      post events_url, params: { event: { title: @event.title, description: @event.description, guests: [] } }
+      post events_url, params: { event: { title: @event.title, 
+                                          description: @event.description, 
+                                          date: @event.date, 
+                                          guests: [] } }
     end
     assert_response :redirect
   end

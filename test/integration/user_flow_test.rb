@@ -31,11 +31,13 @@ class UserFlowsTest < ActionDispatch::IntegrationTest
       post events_path, params: { event:
                                       { title: title,
                                         description: description,
+                                        date: Time.now + 1.week,
                                         guests: [] } }
     end
 
     follow_redirect!
     assert_match description, response.body
+    assert_match title, response.body
 
   end  
   test 'Events should be editable by the creator only' do
@@ -57,6 +59,7 @@ class UserFlowsTest < ActionDispatch::IntegrationTest
     patch event_path(@event), params: { event:
                                             { title: title,
                                               description: description,
+                                              date: Time.now + 1.week,
                                               guests: [] } }
     follow_redirect!
     assert_template 'events/index'

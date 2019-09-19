@@ -24,4 +24,10 @@ class EventTest < ActiveSupport::TestCase
     @event.creator = nil
     assert_not @event.valid?
   end
+
+  test 'event should be in the future' do
+    @event.date = Time.now - 1.week
+    assert_not @event.valid?
+  end
+
 end
