@@ -17,7 +17,7 @@ RSpec.describe 'Log In', type: :feature do
     visit events_path
     expect(page).to have_current_path '/login'
     within('form') do
-      fill_in 'Name', with: 'user'
+      fill_in 'Email', with: 'user@example.com'
     end
     click_button 'Log in'
     expect(page).to have_content 'Log in successful'

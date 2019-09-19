@@ -14,7 +14,7 @@ class UserFlowsTest < ActionDispatch::IntegrationTest
     follow_redirect!
     get events_path
     assert_template 'events/index'
-    assert is_logged_in?, "Is logged in : #{is_logged_in?}"
+    assert logged_in?, "Is logged in : #{logged_in?}"
     assert_select 'a[href=?]', login_path, count: 0
     assert_select 'a[href=?]', signup_path, count: 0
     assert_select 'a[href=?]', root_path
@@ -22,20 +22,15 @@ class UserFlowsTest < ActionDispatch::IntegrationTest
     assert_select 'a[href=?]', events_path
     assert_select 'a[href=?]', new_event_path
     assert_select 'a[href=?]', logout_path
-
     get new_event_path
     assert_template 'events/new'
-
     title = 'Parranda'
     description = 'A vallenato party'
     assert_difference 'Event.count', 1 do
       post events_path, params: { event:
-                                      { title: title,
-                                        description: description,
-                                        date: Time.now + 1.week,
-                                        guests: [] } }
+                                      { title: title, description: description,
+                                        date: Time.now + 1.week, guests: [] } }
     end
-
     follow_redirect!
     assert_match description, response.body
     assert_match title, response.body

@@ -13,7 +13,7 @@ class ActiveSupport::TestCase
   # Add more helper methods to be used by all tests here...
 
   # Returns true if a test user is logged in.
-  def is_logged_in?
+  def logged_in?
     !session[:name].nil?
   end
 
@@ -23,11 +23,4 @@ class ActiveSupport::TestCase
     session[:name] = user.name
   end
   # Add more helper methods to be used by all tests here...
-end
-
-class ActionDispatch::IntegrationTest
-  # Log in as a particular user.
-  def log_in_as(user, password: 'password')
-    post login_path, params: { session: { email: user.email } }
-  end
 end

@@ -10,6 +10,7 @@ RSpec.describe Event, type: :model do
       event = Event.new(
         title: 'The Borders Concert',
         description: 'The borders concert is a nice event',
+        date: Date.tomorrow,
         user_id: user.id
       )
       expect(event).to be_valid
