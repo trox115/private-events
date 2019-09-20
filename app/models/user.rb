@@ -13,4 +13,6 @@ class User < ApplicationRecord
   has_many :events
   has_many :attendances, foreign_key: 'attendee_id'
   has_many :events_as_attendee, through: :attendances, source: 'attended_event'
+  scope :past, -> { where("date < ?", DateTime.now) }
+  scope :future, -> { where("date > ?", DateTime.now) }
 end
