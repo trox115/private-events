@@ -14,8 +14,8 @@ RSpec.describe 'Log In', type: :feature do
     end
     click_button 'Create My Account'
     expect(page).to have_content 'going to (0) Events'
-  click_link 'Logout' 
-  expect(page).to have_current_path root_url
+    click_link 'Logout' 
+    expect(page).to have_current_path root_url
     visit events_path
     expect(page).to have_current_path '/login'
    
