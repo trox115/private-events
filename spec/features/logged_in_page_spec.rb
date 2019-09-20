@@ -13,10 +13,12 @@ RSpec.describe 'Log In', type: :feature do
       fill_in 'Password Confirmation', with: '12345678'
     end
     click_button 'Create My Account'
-    expect(page).to have_content 'Welcome to the Events App, user!'
-
+    expect(page).to have_content 'going to (0) Events'
+  click_link 'Logout' 
+  expect(page).to have_current_path root_url
     visit events_path
     expect(page).to have_current_path '/login'
+   
     within('form') do
       fill_in 'Email', with: 'user@example.com'
     end
