@@ -1,0 +1,10 @@
+<% provide(:title, event.title) %>
+<li>
+  <div class="event">
+    <h3>
+      <%= link_to "#{event.title}",  event_path(event) %>
+    </h3>
+    <p><%= event.description %></p>
+    <p>Date: <%= event.date %> Invites: <%= eventcreator(event) %></p>
+  </div>
+</li>

@@ -1,0 +1,18 @@
+<% provide(:title, @user.name) %>
+      <h1>
+        <%= @user.name %>'s events
+      </h1>
+
+<h3>Iam going to (<%= @future_events.count %>) Events</h3>
+<ul class="attendances">
+  <%= render @future_events %>
+</ul>
+<h3>I went to (<%= @past_events.count %>) Events in the past </h3> 
+<ul class="attendances">
+  <%= render @past_events %>
+</ul>
+<h3>Events(<%= @events.count %>) created by <%=@user.name%></h3>
+<ul class="attendances">
+  <%= render @events %>
+</ul>
+

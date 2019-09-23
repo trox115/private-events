@@ -31,7 +31,7 @@ If you want a copy of this project running on your machine you have to install:
 * Ruby 2.6
 * gem 3.0
 * Bundler 1.17
-* Rails 5.2
+* Rails 6.0.0
 
 For installation instructions follow [The Instalation Guide](https://www.tutorialspoint.com/ruby-on-rails/rails-installation)
 
@@ -78,7 +78,6 @@ your@pc:~$ rails server
 Then, go to [http://localhost:3000/](http://localhost:3000/)
 
 Voila!
-
 
 # License
 
