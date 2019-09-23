@@ -1,7 +1,9 @@
+# frozen_string_literal: true
+
 FactoryBot.define do
   factory :event do
-    sequence(:title){ |n| "event_#{n}"}
-    sequence(:description){ |n| "description of the #{n} event :)"}
+    sequence(:title) { |n| "event_#{n}" }
+    sequence(:description) { |n| "description of the #{n} event :)" }
     association :creator
     date 1.month.from_now
 

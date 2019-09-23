@@ -1,0 +1,16 @@
+<%=form_for(@event, url: local_assigns[:url]) do |f|  %>
+    <%= render 'shared/error_messages_events' %>
+  <%= f.label :title ,"Title"%>
+  <%= f.text_field :title, class: 'form-control'%>
+
+  <%=f.label :date, "Date"%>
+  <%=f.date_field :date, class: 'form-control'  %>
+
+  <%=f.label :description, "Description"%>
+  <%=f.text_area :description, class: 'form-control'  %>
+
+  <%=f.label :guests, "Guests"%>
+  <%= f.collection_select(:guests, User.all , :id, :name, {:selected => @event.guests.map(&:id), include_blank: false }, { multiple: true }) %> 
+
+  <%= f.submit local_assigns[:button_label], class:"btn btn-primary"%>
+<%end%>

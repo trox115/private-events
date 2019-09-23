@@ -1,0 +1,17 @@
+event1:
+  creator: carlos
+  title: "The Weekend Party"
+  description: "the coolest party ever!"
+  date: <%= Time.now + 1.week %>
+
+event2:
+  creator: antonio
+  title: "Christmas party"
+  description: "Happy new Year"
+  date: <%= Time.now + 1.week %>
+
+past_event:
+  creator: antonio
+  title: "Christmas party"
+  description: "Happy new Year"
+  date: <%= Time.now - 5.week %>
